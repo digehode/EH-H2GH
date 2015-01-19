@@ -13,7 +13,7 @@ Contents:
 
    sphinx
    git
-
+   emacs
 
 
 Indices and tables
