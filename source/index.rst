@@ -14,7 +14,8 @@ Contents:
    sphinx
    git
    emacs
-
+   nuggets
+   scanning/web	      
 
 Indices and tables
 ==================
