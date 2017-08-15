@@ -15,7 +15,8 @@ Contents:
    git
    emacs
    nuggets
-   scanning/web	      
+   scanning/web
+   development/python
 
 Indices and tables
 ==================
