@@ -17,7 +17,8 @@ Contents:
    nuggets
    scanning/web
    development/python
-
+   connecting
+   
 Indices and tables
 ==================
 
